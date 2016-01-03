@@ -24,7 +24,14 @@ function loadData()
     console.log(appendMsg);
     $body.append('<img class="bgimg" src= "' + streetviewUrl + '" >');
 
-    var URL= "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + cityStr + "&api-key=eeaee8614076b91d1e6e6b2e330ef4e1:9:36098306";
+    var URL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + cityStr + "&api-key=eeaee8614076b91d1e6e6b2e330ef4e1:9:36098306";
+
+
+//AJAX statement to get Weather Underground key: bf48407e50740efb
+
+
+
+  var URL = "http://api.wunderground.com/api/bf48407e50740efb/conditions/q/CA/San_Francisco.json";
 
 //AJAX statement to get the NY Times Article
     $.getJSON(URL, function(data)
@@ -70,6 +77,16 @@ function loadData()
       }
     });
       return false;
+}
+
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 38.5000, lng: -122.3200},
+    zoom: 10,
+    disableDefaultUI: true
+  });
 }
 
 $('#form-container').submit(loadData);

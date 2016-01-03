@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+      #map {
+        width: 100%;
+        height: 650px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="body-content" class="container-fluid">
+      <div class="search-bar" data-bind="visible: searchBarShow() === ture">
+        <div class=" title">
+          <h2>Wine About It!...</h2>
+        </div>
+        <div class="col-xs-9 search-field">
+          <input data-bind="textInput: searchField" id="input" size="50">
+        </div>
+      </div>
+      </div>
+      <div>
+      <div id="map" ></div>
+      </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap"
+        async defer></script>
+  </body>
+</html>

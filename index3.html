@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Your Moving Companion</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wine About It</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<div class=row>
-  <div class="large-3 columns">
-   <form id="form-container" class="form-container">
-        <label for="street">Street: </label>
-        <input type="text" id="street" value=""><br>
-        <label for="city">City: </label>
-        <input type="text" id="city" value="">
-        <button id="submit-btn">Submit</button>
-    </form>
-  </div>
-</div>
-    <hr>
-
-    <div class="row">
-      <div class="large-12 columns">
-        <h2 id="greeting" class="greeting">Where do you want to live?</h2>
+  <div id="body-content" class="container-fluid">
+    <div class="search-bar" data-bind="visible: searchBarShow() === ture">
+      <div class=" title">
+        <h2>Wine About It!...</h2>
+      </div>
+      <div class="col-xs-9 search-field">
+        <input data-bind="textInput: searchField" id="input" size="50">
       </div>
     </div>
 
-    <div class="wikipedia-container">
-        <h3 id="wikipedia-header">Relevant Wikipedia Links</h3>
-        <ul id="wikipedia-links">Type in an address above and find relevant Wikipedia articles here!</ul>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="map-container">
+
+        </div>
+      </div>
     </div>
 
+  </div>
+<div id="map" ></div>
+  <script>
 
-    <div class="nytimes-container">
-        <h3 id="nytimes-header">New York Times Articles</h3>
-        <ul id="nytimes-articles" class="article-list">What's going on in your new city? Enter an address and hit submit and the NY Times will tell you here!</ul>
-    </div>
+var map;
+function initMap() {
+  var mapId = document.getElementById('map');
+  console.log(mapId);
+map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: -34.397, lng: 150.644},
+  zoom: 8
+});
+console.log(map);
+}
 
-    <script src="js/libs/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap"
+      async defer></script>
+
 </body>
+
 </html>
