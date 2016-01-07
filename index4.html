@@ -14,7 +14,7 @@
   </head>
   <body>
 
-    <div id="body-content" class="container-fluid">
+    <div id="body-content" class="container">
       <div class="search-bar" data-bind="visible: searchBarShow() === ture">
         <div class=" title">
           <h2>Wine About It!...</h2>
@@ -23,13 +23,13 @@
           <input data-bind="textInput: searchField" id="input" size="50">
         </div>
       </div>
-      </div>
-      <div>
       <div id="map" ></div>
       </div>
+      <div>
+      </div>
 
+    <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap"
-        async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap" async defer></script>
   </body>
 </html>
