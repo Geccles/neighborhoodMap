@@ -1,35 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <style>
-      #map {
-        width: 100%;
-        height: 650px;
-      }
-    </style>
-  </head>
-  <body>
 
-    <div id="body-content" class="container">
-      <div class="search-bar" data-bind="visible: searchBarShow() === true">
-        <div class=" title">
-          <h2>Wine About It!...</h2>
-        </div>
-        <div class="col-xs-9 search-field">
-          <input data-bind="textInput: searchField" id="input" size="50">
-        </div>
+<head>
+  <title>Simple Map</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <style>
+    #map {
+      width: 100%;
+      height: 650px;
+    }
+  </style>
+  <style>
+    #DocumentList {
+      overflow-x: hidden;
+      overflow-y: scroll;
+      height: 80px;
+      width: 100%;
+      padding: 0 15px;
+    }
+
+    form {
+      width: 400px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-center">Wine About It</h2>
+        <form id="search">
+          <div class="input-group searchbar" data-bind="visible: searchBarShow() === true">
+
+            <input id="input" class="form-control" type="text" data-bind="textInput: searchField center" placeholder="Search here...">
+            <form>
+          </div>
       </div>
+      <div class="col-md-4">
+        <h2 class="text-center">Wineries</h2>
+        <ul id="DocumentList" class="text-center">
+          <li>Hello 1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+          <li>Hello 1-1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+          <li>Hello 2-1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+          <li>Hello 3-1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+          <li>Hello 4-1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+          <li>Hello 5-1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+          <li>Hello 6-1</li>
+          <li>Hello 2</li>
+          <li>Hello 3</li>
+          <li>Hello 4</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-center">Weather</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
       <div id="map"></div>
-      </div>
-      <div>
-      </div>
+    </div>
+  </div>
+  </div>
+  </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap" async defer></script>
-  </body>
+
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap" async defer></script>
+</body>
+
 </html>
