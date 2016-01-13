@@ -1,6 +1,7 @@
 var modelLoaded = false;
-var modelWineries = [];
+var modelWineries = ko.observableArray([]);
 var openInfoWindow = null;
+var currentMarker = null;
 
 // API for winery list
 var settings = {
@@ -11,10 +12,20 @@ var settings = {
   "method": "GET"
 };
 
+//click on a winery in the wine list goes to the marker
+var clickWine = function() {
+  this.clickMarker();
+};
+
+//if data doesn't load alert the viewer
+var myTimeOut = setTimeout(function(){
+  alert('Sorry, We were unable to retrieve this data. Please check your wifi...I bet it is not on.');
+},3000);
+
 $.ajax(settings).done(function(response) {
-  //console.log(response);
+  clearTimeout(myTimeOut);
   for (var i = 0; i < response.length; i++) {
-    modelWineries.push(response[i]);
+    modelWineries().push(response[i]);
   }
   modelLoaded = true;
 });
@@ -52,7 +63,7 @@ function initMap() {
       '<div id="siteNotice">' +
       '</div>' +
       '<h3 id="firstHeading" class="firstHeading">' + name + '</h3>' + '</div>' +
-      '<a href= class="website">' + website + '</a>' +
+      '<a href="' + website + '" class="website" target="_blank">' + website + '</a>' +
       '<h5 id="phoneNumber" class="number">' + phoneNumber + '</h5>' + '</div>' +
       '<h5 id="address" class="address1">' + address + '</h5>' + '</div>';
 
@@ -61,15 +72,20 @@ function initMap() {
     });
 
     //opens infowindow
-    marker.addListener('click', function() {
+    marker.addListener('click', clickMarker);
+    function clickMarker() {
       if (openInfoWindow) {
         openInfoWindow.close();
+      }
+      if(currentMarker){
+        currentMarker.setIcon('images/wine-icon-2.png');
       }
       marker.setIcon('images/wine-icon.png');
       positionMap(marker.getPosition(), 13);
       infoWindow.open(map, marker);
       openInfoWindow = infoWindow;
-    });
+      currentMarker = marker;
+    }
 
     //closes infowindow
     infoWindow.addListener('closeclick', function() {
@@ -90,18 +106,26 @@ function initMap() {
       map.setCenter(location);
       google.maps.event.trigger(map, 'resize');
     };
+    return {
+      "marker" : marker,
+      "clickMarker" : clickMarker
+    };
   };
 
   //this preps the markers to be made
   var makeMarkers = function() {
-    for (var i = 0; i < modelWineries.length; i++) {
-      placeMarker(new google.maps.LatLng(modelWineries[i].latitude, modelWineries[i].longitude), modelWineries[i].name, modelWineries[i].phoneNumber, modelWineries[i].address, modelWineries[i].website);
+    var newMarkerObj;
+    for (var i = 0; i < modelWineries().length; i++) {
+      newMarkerObj = placeMarker(new google.maps.LatLng(modelWineries()[i].latitude, modelWineries()[i].longitude), modelWineries()[i].name, modelWineries()[i].phoneNumber, modelWineries()[i].address, modelWineries()[i].website);
+      modelWineries()[i].marker = newMarkerObj.marker;
+      modelWineries()[i].clickMarker = newMarkerObj.clickMarker;
     }
   };
 
-  //checkes to see that ajax call completes
+  //checkes to see that ajax call completes then creates the markers
   $(document).ajaxComplete(function(event, xhr, settings) {
     if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
+      ko.applyBindings(initMap, document.getElementById('mapWine'));
       makeMarkers();
     }
   });

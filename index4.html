@@ -31,68 +31,31 @@
 
 <body>
 
-    <div class="row">
+    <div id="mapWine" class="row">
       <div class="col-md-4">
         <h2 class="text-center">Wine About It</h2>
-        <form id="search">
-          <div class="input-group searchbar" data-bind="visible: searchBarShow() === true">
-
-            <input id="input" class="form-control" type="text" data-bind="textInput: searchField center" placeholder="Search here...">
-            <form>
-          </div>
       </div>
       <div class="col-md-4">
         <h2 class="text-center">Wineries</h2>
-        <ul id="DocumentList" class="text-center">
-          <li>Hello 1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
-          <li>Hello 1-1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
-          <li>Hello 2-1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
-          <li>Hello 3-1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
-          <li>Hello 4-1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
-          <li>Hello 5-1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
-          <li>Hello 6-1</li>
-          <li>Hello 2</li>
-          <li>Hello 3</li>
-          <li>Hello 4</li>
+        <ul id="DocumentList" class="text-center" data-bind="foreach: modelWineries">
+          <div data-bind="text: name, click: clickWine"></div>
         </ul>
       </div>
       <div class="col-md-4">
         <h2 class="text-center">Weather</h2>
       </div>
     </div>
-  </div>
   <div class="row">
     <div class="col-xs-12">
       <div id="map"></div>
     </div>
   </div>
-  </div>
-  </div>
-
 
 
 
   <script src="js/jquery.min.js"></script>
+  <script src="js/knockout-3.4.0.js"></script>
   <script src="js/script.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap" async defer></script>
 </body>
 
