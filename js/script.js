@@ -1,5 +1,6 @@
 var modelLoaded = false;
 var modelWineries = ko.observableArray([]);
+var filter = ko.observable('');
 var openInfoWindow = null;
 var currentMarker = null;
 
@@ -17,10 +18,36 @@ var clickWine = function() {
   this.clickMarker();
 };
 
+//filter box
+var filteredItems = ko.computed(function() {
+  var myFilter = filter().toLowerCase();
+  if (!myFilter || myFilter === "") {
+    return modelWineries();
+  } else {
+    return ko.utils.arrayFilter(modelWineries(), function(item) {
+      //returns the names only that match that filter string
+      return (item.name.toLowerCase().indexOf(myFilter) > -1);
+    });
+  }
+}, modelWineries, {
+  deferEvaluation: true
+});
+
+//removes marker when filtered
+filteredItems.subscribe(function(newList) {
+
+  for (var i = 0; i < modelWineries().length; i++) {
+    modelWineries()[i].marker.setVisible(false);
+  }
+  for (var j = 0; j < newList.length; j++) {
+    newList[j].marker.setVisible(true);
+  }
+});
+
 //if data doesn't load alert the viewer
-var myTimeOut = setTimeout(function(){
+var myTimeOut = setTimeout(function() {
   alert('Sorry, We were unable to retrieve this data. Please check your wifi...I bet it is not on.');
-},3000);
+}, 3000);
 
 $.ajax(settings).done(function(response) {
   clearTimeout(myTimeOut);
@@ -73,11 +100,12 @@ function initMap() {
 
     //opens infowindow
     marker.addListener('click', clickMarker);
+
     function clickMarker() {
       if (openInfoWindow) {
         openInfoWindow.close();
       }
-      if(currentMarker){
+      if (currentMarker) {
         currentMarker.setIcon('images/wine-icon-2.png');
       }
       marker.setIcon('images/wine-icon.png');
@@ -107,8 +135,8 @@ function initMap() {
       google.maps.event.trigger(map, 'resize');
     };
     return {
-      "marker" : marker,
-      "clickMarker" : clickMarker
+      "marker": marker,
+      "clickMarker": clickMarker
     };
   };
 

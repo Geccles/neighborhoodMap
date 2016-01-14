@@ -22,7 +22,7 @@
       padding: 0 15px;
     }
 
-    form {
+    .filterWine {
       width: 400px;
       margin: 0 auto;
     }
@@ -30,21 +30,23 @@
 </head>
 
 <body>
-
-    <div id="mapWine" class="row">
-      <div class="col-md-4">
-        <h2 class="text-center">Wine About It</h2>
-      </div>
-      <div class="col-md-4">
-        <h2 class="text-center">Wineries</h2>
-        <ul id="DocumentList" class="text-center" data-bind="foreach: modelWineries">
-          <div data-bind="text: name, click: clickWine"></div>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h2 class="text-center">Weather</h2>
+  <div id="mapWine" class="row">
+    <div class="col-md-4">
+      <h2 class="text-center">Wine About It</h2>
+      <div class="filterWine">
+        <input placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
       </div>
     </div>
+    <div class="col-md-4">
+      <h2 class="text-center">Wineries</h2>
+      <ul id="DocumentList" class="text-center" data-bind="foreach: filteredItems">
+        <div data-bind="text: name, click: clickWine"></div>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2 class="text-center">Weather</h2>
+    </div>
+  </div>
   <div class="row">
     <div class="col-xs-12">
       <div id="map"></div>
