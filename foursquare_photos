@@ -1,0 +1,21 @@
+
+https://api.foursquare.com/v2/venues/4aef6681f964a52023d821e3/photos?client_id=0G5RS5KJQLRKGBBO5WZUH1H1SNMWBNWBTENS03AKKAB0ZA30&client_secret=DCIZDOFW11PNDHPODTKNZFJI0YL0VKOC32FTXPMBYLEZJLN1&v=20130815
+
+https://irs2.4sqi.net/img/general/500x300/214878_rxGT8QtTZ90WfFmZfjG2agQdzPq0HLgnXR0FYvQ_QJE.jpg
+
+
+var prefix = "https://api.foursquare.com/v2/venues/";
+var suffix = "/photos?client_id=0G5RS5KJQLRKGBBO5WZUH1H1SNMWBNWBTENS03AKKAB0ZA30&client_secret=DCIZDOFW11PNDHPODTKNZFJI0YL0VKOC32FTXPMBYLEZJLN1&v=20130815";
+
+var uri  = prefix + venueId + suffix;
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": uri,
+  "method": "GET"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
