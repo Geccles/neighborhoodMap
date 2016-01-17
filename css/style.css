@@ -1,54 +1,75 @@
+/* start of responsive flexbox container that contains each section*/
 .flex-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-	height: 150px;
-	-webkit-align-items: flex-start;
-	 -ms-flex-align: start;
-	 align-items: flex-start;
-	 -webkit-flex-flow: row;
-	 flex-direction: row;
-}
-.section {
-  border-radius: .3em;
-  box-sizing: border-box;
-  border: 4px solid #999;
-  padding: 20px;
-  background: #E6E3D4;
+	border: 5px solid #642690;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
 	flex-direction: row;
 }
+
+/* sylting for filter, winery list, and weather section */
+.section {
+	width: 33.33%;
+	padding-left: 5%;
+	padding-right: 5%;
+	border: 5px solid #814fa4;
+}
+
 body {
-  background-color: #814fa4;
+  background-color: #e5dbec;
 	width: 100%;
     margin: 0 auto;
-
 }
+
+/* filter styling section */
+
+/* Winery List style */
 #DocumentList {
   overflow-x: hidden;
   overflow-y: scroll;
+	height: 100px;
+	padding: 10px;
+	-webkit-padding-start: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-before: 0;
 }
+
+/* weather styling section */
+
+/* font styling for each section */
 h2 {
   text-align: center;
+	-webkit-margin-after: 0;
+	-webkit-margin-before: 0;
 }
+/* map styling */
 #map {
   width: 100%;
-  height: 650px;
+  height: 600px;
 }
 .section4 {
   padding-bottom: 40px;
-  padding-top: 10px;
 }
-
 
 /* Smaller screen styles */
 @media only screen and (max-width: 720px) {
 
 /*set direction to single column, set ordinal values*/
-body {
+
+.flex-container {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+}
+
+.section {
+	width: 100%;
+	padding-left: 5%;
+	padding-right: 5%;
+	border: 5px solid #814fa4;
 }
