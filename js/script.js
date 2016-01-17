@@ -3,15 +3,45 @@ var modelWineries = ko.observableArray([]);
 var filter = ko.observable('');
 var openInfoBubble = null;
 var currentMarker = null;
+var weather = ko.observable('');
+var temperature_string = ko.observable('');
+var icon_url = ko.observable('');
 
-// API for winery list
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  dataType: "json",
-  "url": "http://eccleshome.com/winery-project/api.php/wineries",
-  "method": "GET"
-};
+//This loads my data
+var loadMyData = function() {
+
+  // API for winery list
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    dataType: "json",
+    "url": "http://eccleshome.com/winery-project/api.php/wineries",
+    "method": "GET"
+  };
+
+  var success = function(response) {
+    clearTimeout(myTimeOut);
+    for (var i = 0; i < response.length; i++) {
+      modelWineries().push(response[i]);
+    }
+    modelLoaded = true;
+  };
+
+  var err = function(req, status, err) {
+    clearTimeout(myTimeOut);
+    alert("Sorry, this data is unable to load at this time.");
+  };
+
+  //if data doesn't load alert the viewer
+  var myTimeOut = setTimeout(function() {
+    alert('Sorry, We were unable to retrieve this data. Please check your wifi...I bet it is not on.');
+  }, 3000);
+
+  var req = $.ajax(settings);
+
+  req.done(success);
+  req.fail(err);
+}();
 
 //click on a winery in the wine list goes to the marker
 var clickWine = function() {
@@ -44,6 +74,37 @@ filteredItems.subscribe(function(newList) {
   }
 });
 
+//weatherUndegroud api
+var weatherWine = function() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://api.wunderground.com/api/4380142d7dffde3b/conditions/q/CA/Napa_Valley.json",
+    "method": "GET",
+  };
+
+  var success = function(results) {
+    if (!results.response.error) {
+      var uri = results.current_observation.icon_url;
+      var imageLink = '<img src="' + uri + '" alt="Weather icon">';
+      weather(results.current_observation.weather);
+      temperature_string(results.current_observation.temperature_string);
+      icon_url(imageLink);
+    } else {
+      weather("Sorry, WeatherUnderground is currently not working. Please try again later or let the developer know something went wrong.");
+    }
+  };
+
+  var err = function(req, status, err) {
+    weather("Sorry, WeatherUnderground is currently not working. Please try again later or let the developer know something went TERRIBLY wrong.");
+  };
+
+  req = $.ajax(settings);
+
+  req.done(success);
+  req.fail(err);
+};
+
 //retrieves photos from foursquare from each winery
 var photoWine = function(venueId, infoBubble, indexTab) {
   var prefix = "https://api.foursquare.com/v2/venues/";
@@ -55,37 +116,36 @@ var photoWine = function(venueId, infoBubble, indexTab) {
     "async": true,
     "crossDomain": true,
     "url": uri,
-    "method": "GET"
-  };
-
-  $.ajax(settings).done(function(results) {
-    var count = results.response.photos.count;
-    var prefix, suffix, uri;
-    var contentString = "";
-    for (var i = 0; i < count; i++) {
-      prefix = results.response.photos.items[i].prefix;
-      suffix = results.response.photos.items[i].suffix;
-      uri = prefix + "width300" + suffix;
-      contentString += '<img src="' + uri + '" alt="Foursquare photo">';
-      contentString += '<br>';
-      console.log(contentString);
+    "method": "GET",
+    "error": function() {
+      var contentString = "Sorry, we could not retrieve the photos at this time.";
       infoBubble.updateTab(indexTab, "Photos", contentString);
     }
-  });
+  };
+
+var success = function(results) {
+  var contentString = "";
+  var count = results.response.photos.count;
+  var prefix, suffix, uri;
+  for (var i = 0; i < count; i++) {
+    prefix = results.response.photos.items[i].prefix;
+    suffix = results.response.photos.items[i].suffix;
+    uri = prefix + "width300" + suffix;
+    contentString += '<img src="' + uri + '" alt="Foursquare photo">';
+    contentString += '<br>';
+  }
+  infoBubble.updateTab(indexTab, "Photos", contentString);
 };
 
-//if data doesn't load alert the viewer
-var myTimeOut = setTimeout(function() {
-  alert('Sorry, We were unable to retrieve this data. Please check your wifi...I bet it is not on.');
-}, 3000);
+var err = function(req, status, err) {
+  contentString = "Sorry, we could not retrieve the photos at this time.";
+};
 
-$.ajax(settings).done(function(response) {
-  clearTimeout(myTimeOut);
-  for (var i = 0; i < response.length; i++) {
-    modelWineries().push(response[i]);
-  }
-  modelLoaded = true;
-});
+  var req = $.ajax(settings);
+
+  req.done(success);
+  req.fail(err);
+};
 
 //AJAX statement to get Weather Underground key: bf48407e50740efb
 var URL = "http://api.wunderground.com/api/bf48407e50740efb/conditions/q/CA/San_Francisco.json";
@@ -195,6 +255,8 @@ function initMap() {
   $(document).ajaxComplete(function(event, xhr, settings) {
     if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
       ko.applyBindings(initMap, document.getElementById('mapWine'));
+      //loads weather
+      weatherWine();
       makeMarkers();
     }
   });
