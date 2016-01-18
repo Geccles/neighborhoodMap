@@ -13,9 +13,9 @@
   <div class="flex-container">
       <div class="section">
         <h2 class="wineAboutIt" style="text-center">Wine About It</h2>
-        <div class="filterWine">
-          <input id="filter" class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
-        </div>
+        <form>
+          <input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'"/>
+        </form>
       </div>
       <div class="section">
         <h2 class="wineryList">Wineries</h2>
@@ -26,8 +26,8 @@
       <div class="section">
         <h2 id="weather" class="weatherData">Weather</h2>
         <div class="weatherIcon" data-bind="html: icon_url"></div>
-        <div data-bind="text: weather", ></div>
-        <div data-bind="text: temperature_string"></div>
+        <div class="weatherText" data-bind="text: weather", ></div>
+        <div class="temp" data-bind="text: temperature_string"></div>
       </div>
 </div>
     <div class="section4">
