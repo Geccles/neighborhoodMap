@@ -11,32 +11,30 @@
 
 <body>
   <div class="flex-container">
-      <div class="section">
-        <h2 class="wineAboutIt" style="text-center">Wine About It</h2>
-        <form>
-          <input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'"/>
-        </form>
-      </div>
-      <div class="section">
-        <h2 class="wineryList">Wineries</h2>
-        <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
-          <div data-bind="text: name, click: clickWine"></div>
-        </ul>
-      </div>
-      <div class="section">
-        <h2 id="weather" class="weatherData">Weather</h2>
-        <div class="weatherIcon" data-bind="html: icon_url"></div>
-        <div class="weatherText" data-bind="text: weather", ></div>
-        <div class="temp" data-bind="text: temperature_string"></div>
-      </div>
-</div>
-    <div class="section4">
-      <div class="mapData">
-        <div id="map"></div>
-      </div>
+    <div class="section">
+      <h2 class="wineAboutIt" style="text-center">Wine About It</h2>
+      <form class="filter">
+        <input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+      </form>
     </div>
-
-
+    <div class="section">
+      <h2 class="wineryList">Wineries</h2>
+      <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
+        <div data-bind="text: name, click: clickWine"></div>
+      </ul>
+    </div>
+    <div class="section">
+      <h2 id="weather" class="weatherData">Weather</h2>
+      <div class="weatherIcon" data-bind="html: icon_url"></div>
+      <div class="weatherText" data-bind="text: weather" ,></div>
+      <div class="temp" data-bind="text: temperature_string"></div>
+    </div>
+  </div>
+  <div class="section4">
+    <div class="mapData">
+      <div id="map"></div>
+    </div>
+  </div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/knockout-3.4.0.js"></script>
@@ -44,6 +42,8 @@
   <script src="js/infobubble.js"></script>
   <script src="js/script.js"></script>
 </body>
-#642690 #814fa4 #d5c4e1 #e0d4e9 #e5dbec
+<div class="footer">
+  <h4>Copyright © Galina Eccles 2016.</h4>
+</div>
 
 </html>
