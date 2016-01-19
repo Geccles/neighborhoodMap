@@ -5,15 +5,18 @@
   <title>Simple Map</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
-  <link rel="stylesheet" href="css/style.css">
-  <link>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css"></link>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css"></link>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css"></link>
+
 </head>
 
 <body>
   <div class="flex-container">
     <div class="section">
       <h2 class="wineAboutIt" style="text-center">Wine About It</h2>
-      <form class="filter">
+      <form>
         <input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
       </form>
     </div>
@@ -38,6 +41,7 @@
 
   <script src="js/jquery.min.js"></script>
   <script src="js/knockout-3.4.0.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=initMap" async defer></script>
   <script src="js/infobubble.js"></script>
   <script src="js/script.js"></script>
@@ -45,5 +49,4 @@
 <div class="footer">
   <h4>Copyright © Galina Eccles 2016.</h4>
 </div>
-
 </html>
