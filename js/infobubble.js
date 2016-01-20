@@ -168,9 +168,8 @@ InfoBubble.prototype.BORDER_COLOR_ = '#ccc';
  * Default border radius
  * @const
  * @private
- * changed from 10 to 0 to get tabs on the same line
  */
-InfoBubble.prototype.BORDER_RADIUS_ = 0;
+InfoBubble.prototype.BORDER_RADIUS_ = 10;
 
 
 /**
