@@ -1,48 +1,7 @@
-
-
-  /* start of responsive flexbox container that contains each section*/
-
-.flex-container {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border: 5px solid #642690;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-/* sylting for filter, winery list, and weather section */
-
-.section {
-  width: 33.33%;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 3%;
-  border: 5px solid #814fa4;
-}
-body {
-  background-color: #e5dbec;
+#map {
   width: 100%;
-  margin: 0 auto;
+  height: 800px;
 }
-
-/* filter styling section */
-
-.inputBox {
-  padding: 2%;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  color: #aaa;
-  border: solid 3px #814fa4;
-  width: 100%;
-  margin: auto;
-}
-.wineAboutIt {
-  padding-bottom: 15%;
-}
-
-/* Winery List style */
 
 #DocumentList {
   overflow-x: hidden;
@@ -51,97 +10,158 @@ body {
   -webkit-padding-start: 0;
   -webkit-margin-after: 0;
   -webkit-margin-before: 0;
-  border: solid 3px #814fa4;
   width: 100%;
   margin: auto;
 }
 
-/* weather styling section */
-
-.weatherIcon {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-.weatherText {
-  text-align: center;
-}
-.temp {
-  text-align: center;
-	font-size: .8em;
-	font-family: Arial, sans-serif;
-}
-
-/* font styling for each section */
-
-h2 {
-  text-align: center;
-	font-family: Arial, sans-serif;
-	font-size: 1.5em;
-  -webkit-margin-after: 0;
-  -webkit-margin-before: 0;
-  padding: 5%;
+a.nav-expander {
+background: none repeat scroll 0 0 #000000;
+color: #FFFFFF;
+display: block;
+font-size: 15px;
+font-weight: 400;
+height: 50px;
+margin-right: 0;
+padding: 1em 1.6em 2em;
+position: absolute;
+right: 0;
+text-decoration: none;
+text-transform: uppercase;
+top: 0;
+transition: right 0.3s ease-in-out 0s;
+width: 130px;
+z-index: 12;
+transition: right 0.3s ease-in-out 0s;
+-webkit-transition: right 0.3s ease-in-out 0s;
+-moz-transition: right 0.3s ease-in-out 0s;
+-o-transition: right 0.3s ease-in-out 0s;
 }
 
-/* map styling */
-
-#map {
-  width: 100%;
-  height: 600px;
+.nav-expander:hover {
+cursor: pointer;
 }
 
-/* footer styling */
-
-.footer {
-  text-align: center;
-  font-family: Arial, sans-serif;
-	font-size: .8em;
+a.nav-expander.fixed {
+position: fixed;
 }
 
-/* Smaller screen styles */
+.nav-expanded a.nav-expander.fixed {
+  right: 20em;
+}
 
-@media only screen and (max-width: 720px) {
-  /*set direction to single column, set ordinal values*/
-  .flex-container {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  .section {
-    width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
-    border: 5px solid #814fa4;
-  }
-  h2 {
-    padding: 1%;
-  }
-  /* filter styling section */
-  .inputBox {
-    padding: 2%;
-    font-size: 1em;
-    font-family: Arial, sans-serif;
-    color: #aaa;
-    border: solid 3px #814fa4;
-    width: 80%;
-    margin: auto;
-  }
-  .wineAboutIt {
-    padding-top: 1%;
-    padding-bottom: 3%;
-    padding-right: 10%;
-  }
-  /* Winery List style */
-  #DocumentList {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    height: 100px;
-    -webkit-padding-start: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-before: 0;
-    border: solid 3px #814fa4;
-    width: 80%;
-    margin: auto;
-  }
+nav {
+  background: #2d2f33;
+  display: block;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  right: -20em;
+  font-size: 15px;
+  top: 0;
+  width: 20em;
+  z-index: 2000;
+
+  transition: right 0.3s ease-in-out 0s;
+  -webkit-transition: right 0.3s ease-in-out 0s;
+  -moz-transition: right 0.3s ease-in-out 0s;
+  -o-transition: right 0.3s ease-in-out 0s;
+
+}
+.nav-expanded nav {
+  right: 0;
+}
+
+body.nav-expanded {
+  margin-left: 0em;
+  transition: right 0.4s ease-in-out 0s;
+  -webkit-transition: right 0.4s ease-in-out 0s;
+  -moz-transition: right 0.4s ease-in-out 0s;
+  -o-transition: right 0.4s ease-in-out 0s;
+}
+
+#nav-close {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  padding-right: 10px;
+}
+
+.main-menu {
+  padding-top: 12px;
+}
+
+.main-menu li {
+  border-bottom: 1px solid #323949;
+  margin-left: 20px;
+  font-size: 18px;
+  padding: 12px;
+}
+
+.main-menu li a {
+  color: #6F7D8C;
+  text-decoration: none;
+}
+
+.main-menu:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.main-menu li .sub-nav {
+  border-bottom: 0px;
+  padding: 4px;
+}
+
+.main-menu a .caret {
+	width: 0;
+	height: 0;
+	display: inline-block;
+	vertical-align: top;
+	border-top: 4px solid #4f5963;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	content: "";
+    margin-top: 8px;
+}
+
+.main-menu a:hover .caret {
+	border-top-color: #4f5963;
+}
+
+.main-menu li.open > a > .caret {
+	border-top: none;
+	border-bottom: 4px solid #4f5963;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+}
+
+.main-menu li.open > a:hover > .caret {
+	border-bottom-color: #4f5963;
+}
+
+.icon:before {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none;
+  content: '\f105';
+}
+
+.main-menu li > a > span.icon {
+  float: right;
+  margin: 0.1em 1.7em -0.1em 0;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.main-menu li > a:hover > span.icon {
+  float: right;
+  margin: 0.1em 0.8em -0.1em 0;
+  opacity: 1;
+}

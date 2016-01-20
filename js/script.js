@@ -6,41 +6,53 @@ var currentMarker = null;
 var weather = ko.observable('');
 var temperature_string = ko.observable('');
 var icon_url = ko.observable('');
+var localStorage = null;
 
 //This loads my data
 var loadMyData = function() {
+  var localStorage = lscache.get('modelWineries');
+  console.log(localStorage);
+  alert("hello");
+  if (localStorage === null) {
 
-  // API for winery list
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    dataType: "json",
-    "url": "http://eccleshome.com/winery-project/api.php/wineries",
-    "method": "GET"
-  };
+    // API for winery list
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      dataType: "json",
+      "url": "http://eccleshome.com/winery-project/api.php/wineries",
+      "method": "GET"
+    };
 
-  var success = function(response) {
-    clearTimeout(myTimeOut);
-    for (var i = 0; i < response.length; i++) {
-      modelWineries().push(response[i]);
+    var success = function(response) {
+      clearTimeout(myTimeOut);
+      for (var i = 0; i < response.length; i++) {
+        modelWineries().push(response[i]);
+      }
+      lscache.set('modelWineries', response, 2);
+      modelLoaded = true;
+    };
+
+    var err = function(req, status, err) {
+      clearTimeout(myTimeOut);
+      alert("Sorry, this data is unable to load at this time.");
+    };
+
+    //if data doesn't load alert the viewer
+    var myTimeOut = setTimeout(function() {
+      alert('Sorry, We were unable to retrieve this data. Please check your wifi...I bet it is not on.');
+    }, 3000);
+
+    var req = $.ajax(settings);
+
+    req.done(success);
+    req.fail(err);
+  } else {
+    for (var i = 0; i < localStorage.length; i++) {
+      modelWineries().push(localStorage[i]);
     }
     modelLoaded = true;
-  };
-
-  var err = function(req, status, err) {
-    clearTimeout(myTimeOut);
-    alert("Sorry, this data is unable to load at this time.");
-  };
-
-  //if data doesn't load alert the viewer
-  var myTimeOut = setTimeout(function() {
-    alert('Sorry, We were unable to retrieve this data. Please check your wifi...I bet it is not on.');
-  }, 3000);
-
-  var req = $.ajax(settings);
-
-  req.done(success);
-  req.fail(err);
+  }
 }();
 
 //click on a winery in the wine list goes to the marker
@@ -123,23 +135,23 @@ var photoWine = function(venueId, infoBubble, indexTab) {
     }
   };
 
-var success = function(results) {
-  var contentString = "";
-  var count = results.response.photos.count;
-  var prefix, suffix, uri;
-  for (var i = 0; i < count; i++) {
-    prefix = results.response.photos.items[i].prefix;
-    suffix = results.response.photos.items[i].suffix;
-    uri = prefix + "width300" + suffix;
-    contentString += '<img src="' + uri + '" alt="Foursquare photo">';
-    contentString += '<br>';
-  }
-  infoBubble.updateTab(indexTab, "Photos", contentString);
-};
+  var success = function(results) {
+    var contentString = "";
+    var count = results.response.photos.count;
+    var prefix, suffix, uri;
+    for (var i = 0; i < count; i++) {
+      prefix = results.response.photos.items[i].prefix;
+      suffix = results.response.photos.items[i].suffix;
+      uri = prefix + "width300" + suffix;
+      contentString += '<img src="' + uri + '" alt="Foursquare photo">';
+      contentString += '<br>';
+    }
+    infoBubble.updateTab(indexTab, "Photos", contentString);
+  };
 
-var err = function(req, status, err) {
-  contentString = "Sorry, we could not retrieve the photos at this time.";
-};
+  var err = function(req, status, err) {
+    contentString = "Sorry, we could not retrieve the photos at this time.";
+  };
 
   var req = $.ajax(settings);
 
@@ -187,7 +199,7 @@ function initMap() {
     //creating infobubble and style
     var infoBubble = new InfoBubble({
       minHeight: 250,
-      maxHeight: 300,
+      maxHeight: 250,
       minWidth: 325,
       maxWidth: 400,
       borderRadius: 0,
@@ -256,44 +268,33 @@ function initMap() {
     }
   };
 
-  //checkes to see that ajax call completes then creates the markers
-  $(document).ajaxComplete(function(event, xhr, settings) {
-    if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
-      ko.applyBindings(initMap, document.getElementById('mapWine'));
-      //loads weather
-      weatherWine();
-      makeMarkers();
-    }
-  });
+  if (localStorage) {
+    ko.applyBindings(initMap, document.getElementById('mapWine'));
+    //loads weather
+    weatherWine();
+    makeMarkers();
+  } else {
+
+    //checkes to see that ajax call completes then creates the markers
+    $(document).ajaxComplete(function(event, xhr, settings) {
+      if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
+        ko.applyBindings(initMap, document.getElementById('mapWine'));
+        //loads weather
+        weatherWine();
+        makeMarkers();
+      }
+    });
+  }
 }
 
-$(document).ready(function(){
-
 //Navigation Menu Slider
-$('#nav-expander').on('click',function(e){
-	e.preventDefault();
-	$('body').toggleClass('nav-expanded');
-});
-$('#nav-close').on('click',function(e){
-	e.preventDefault();
-	$('body').removeClass('nav-expanded');
-});
-
-// Initialize navgoco with default options
-$(".main-menu").navgoco({
-    caret: '<span class="caret"></span>',
-    accordion: false,
-    openClass: 'open',
-    save: true,
-    cookie: {
-        name: 'navgoco',
-        expires: false,
-        path: '/'
-    },
-    slide: {
-        duration: 300,
-        easing: 'swing'
-    }
-});
-
+$(document).ready(function() {
+  $('#nav-expander').on('click', function(e) {
+    e.preventDefault();
+    $('body').toggleClass('nav-expanded');
+  });
+  $('#nav-close').on('click', function(e) {
+    e.preventDefault();
+    $('body').removeClass('nav-expanded');
+  });
 });
