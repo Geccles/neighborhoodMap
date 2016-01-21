@@ -12,7 +12,6 @@ var localStorage = null;
 var loadMyData = function() {
   var localStorage = lscache.get('modelWineries');
   console.log(localStorage);
-  alert("hello");
   if (localStorage === null) {
 
     // API for winery list
@@ -29,7 +28,7 @@ var loadMyData = function() {
       for (var i = 0; i < response.length; i++) {
         modelWineries().push(response[i]);
       }
-      lscache.set('modelWineries', response, 2);
+      lscache.set('modelWineries', response, 3);
       modelLoaded = true;
     };
 
@@ -165,7 +164,7 @@ var URL = "http://api.wunderground.com/api/bf48407e50740efb/conditions/q/CA/San_
 //this loads the map
 var map;
 
-function initMap() {
+var initMap = function() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
       lat: 38.5000,
@@ -259,7 +258,7 @@ function initMap() {
   };
 
   //this preps the markers to be made
-  var makeMarkers = function() {
+  this.makeMarkers = function() {
     var newMarkerObj;
     for (var i = 0; i < modelWineries().length; i++) {
       newMarkerObj = placeMarker(new google.maps.LatLng(modelWineries()[i].latitude, modelWineries()[i].longitude), modelWineries()[i].name, modelWineries()[i].phoneNumber, modelWineries()[i].address, modelWineries()[i].website, modelWineries()[i].venueId);
@@ -268,23 +267,25 @@ function initMap() {
     }
   };
 
-  if (localStorage) {
-    ko.applyBindings(initMap, document.getElementById('mapWine'));
-    //loads weather
-    weatherWine();
-    makeMarkers();
-  } else {
+};
 
-    //checkes to see that ajax call completes then creates the markers
-    $(document).ajaxComplete(function(event, xhr, settings) {
-      if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
-        ko.applyBindings(initMap, document.getElementById('mapWine'));
-        //loads weather
-        weatherWine();
-        makeMarkers();
-      }
-    });
-  }
+if (localStorage) {
+  console.log("localStorage is set");
+  ko.applyBindings(initMap, document.getElementById('mapWine'));
+  //loads weather
+  weatherWine();
+  makeMarkers();
+} else {
+console.log("localStorage not set");
+  //checkes to see that ajax call completes then creates the markers
+  $(document).ajaxComplete(function(event, xhr, settings) {
+    if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
+      ko.applyBindings(initMap, document.getElementById('mapWine'));
+      //loads weather
+      weatherWine();
+      makeMarkers();
+    }
+  });
 }
 
 //Navigation Menu Slider
