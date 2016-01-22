@@ -12,11 +12,29 @@
   -webkit-margin-before: 0;
   width: 100%;
   margin: auto;
+  padding-left: 10%;
+}
+
+h2 {
+  text-align: center;
+  padding: 5%;
+}
+
+.section {
+  border-top: 3px solid #323949;
+}
+
+.weatherSection {
+  text-align: center;
+}
+.footer {
+  padding-top: 40%;
+  text-align: center;
 }
 
 a.nav-expander {
 background: none repeat scroll 0 0 #000000;
-color: #FFFFFF;
+color: #6F7D8C;
 display: block;
 font-size: 15px;
 font-weight: 400;
@@ -60,7 +78,6 @@ nav {
   top: 0;
   width: 20em;
   z-index: 2000;
-
   transition: right 0.3s ease-in-out 0s;
   -webkit-transition: right 0.3s ease-in-out 0s;
   -moz-transition: right 0.3s ease-in-out 0s;
@@ -71,12 +88,18 @@ nav {
   right: 0;
 }
 
+.title {
+  color: #6F7D8C;
+  padding-left: 2%;
+}
+
 body.nav-expanded {
   margin-left: 0em;
   transition: right 0.4s ease-in-out 0s;
   -webkit-transition: right 0.4s ease-in-out 0s;
   -moz-transition: right 0.4s ease-in-out 0s;
   -o-transition: right 0.4s ease-in-out 0s;
+  color: #6F7D8C;
 }
 
 #nav-close {
@@ -84,6 +107,11 @@ body.nav-expanded {
   font-weight: 300;
   font-size: 24px;
   padding-right: 10px;
+  color: #6F7D8C;
+}
+
+#nav-close:hover {
+  color: #FFFFFF;
 }
 
 .main-menu {
@@ -91,18 +119,12 @@ body.nav-expanded {
 }
 
 .main-menu li {
-  border-bottom: 1px solid #323949;
   margin-left: 20px;
   font-size: 18px;
   padding: 12px;
 }
 
-.main-menu li a {
-  color: #6F7D8C;
-  text-decoration: none;
-}
-
-.main-menu:hover {
+.navHover:hover {
   color: #FFFFFF;
   text-decoration: none;
 }
@@ -122,21 +144,6 @@ body.nav-expanded {
 	border-left: 4px solid transparent;
 	content: "";
     margin-top: 8px;
-}
-
-.main-menu a:hover .caret {
-	border-top-color: #4f5963;
-}
-
-.main-menu li.open > a > .caret {
-	border-top: none;
-	border-bottom: 4px solid #4f5963;
-	border-right: 4px solid transparent;
-	border-left: 4px solid transparent;
-}
-
-.main-menu li.open > a:hover > .caret {
-	border-bottom-color: #4f5963;
 }
 
 .icon:before {

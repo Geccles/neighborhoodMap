@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css"></link>
+  <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css"></link>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css"></link>
 </head>
 
@@ -20,9 +21,9 @@
   <div class="navbar navbar-inverse navbar-fixed-top">
 
       <!--Include your brand here-->
-      <a class="navbar-brand">Wine About It</a>
+      <h4 class="title">Wine About It</h4>
       <div class="navbar-header pull-right">
-        <a id="nav-expander" class="nav-expander fixed">
+        <a id="nav-expander" class="nav-expander fixed navHover">
           MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
         </a>
       </div>
@@ -31,22 +32,25 @@
 
   <ul class="list-unstyled main-menu">
     <!--Include your navigation here-->
-    <li class="text-right"><a href="#" id="nav-close">X</a></li>
-    <li>Wine About It<input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" /></li>
+    <li class="text-right"><a href="#" id="nav-close"><i class="fa fa-times fa fa-lg"></i></a></li>
+    <h2 class="section">Wine About It<h2>
+
+    <li><input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'"/></li>
 
 
-    <h2 class="wineryList">Wineries</h2>
+    <h2 class="wineryList section">Wineries</h2>
     <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
       <div data-bind="text: name, click: clickWine"></div>
     </ul>
 
-    <li><a href="#">Menu Three <span class="icon"></span></a><h2 id="weather" class="weatherData">Weather</h2>
-    <div class="weatherIcon" data-bind="html: icon_url"></div>
-    <div class="weatherText" data-bind="text: weather" ,></div>
-    <div class="temp" data-bind="text: temperature_string"></div></li>
+    <h2 id="weather" class="weatherData section">Weather</h2>
+    <div class="weatherIcon weatherSection" data-bind="html: icon_url"></div>
+    <div class="weatherText weatherSection" data-bind="text: weather" ,></div>
+    <div class="temp weatherSection" data-bind="text: temperature_string"></div></li>
 
-    <li><a href="#">Dropdown</a>
-    </li>
+    <div class="footer">
+      <h4>Copyright © Galina Eccles 2016.</h4>
+    </div>
   </ul>
 </nav>
 
@@ -60,7 +64,4 @@
   <script src="js/lscache.js"></script>
   <script src="js/script.js"></script>
 </body>
-<div class="footer">
-  <h4>Copyright © Galina Eccles 2016.</h4>
-</div>
 </html>
