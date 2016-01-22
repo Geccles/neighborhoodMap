@@ -106,7 +106,7 @@ body.nav-expanded {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 300;
   font-size: 24px;
-  padding-right: 10px;
+  padding-right: 5%;
   color: #6F7D8C;
 }
 
@@ -115,13 +115,13 @@ body.nav-expanded {
 }
 
 .main-menu {
-  padding-top: 12px;
+  padding-top: 10%;
 }
 
 .main-menu li {
   margin-left: 20px;
   font-size: 18px;
-  padding: 12px;
+  padding: 3%;
 }
 
 .navHover:hover {

@@ -7,11 +7,17 @@ var weather = ko.observable('');
 var temperature_string = ko.observable('');
 var icon_url = ko.observable('');
 var localStorage = null;
+var initialZoom = 10;
+var initialLatitude = 38.460694;
+var initialLongitude = -122.396604;
+
+// Returns width of browser viewport
+var windowWidth = $( window ).width();
+var windowHeight = $( window ).width();
 
 //This loads my data
 var loadMyData = function() {
   var localStorage = lscache.get('modelWineries');
-  console.log(localStorage);
   if (localStorage === null) {
 
     // API for winery list
@@ -28,7 +34,7 @@ var loadMyData = function() {
       for (var i = 0; i < response.length; i++) {
         modelWineries().push(response[i]);
       }
-      lscache.set('modelWineries', response, 3);
+      lscache.set('modelWineries', response, 1);
       modelLoaded = true;
     };
 
@@ -118,6 +124,13 @@ var weatherWine = function() {
 
 //retrieves photos from foursquare from each winery
 var photoWine = function(venueId, infoBubble, indexTab) {
+  var photoWidth = "width300";
+  if(windowWidth < 800) {
+    photoWidth = "width100";
+  }
+  if(windowWidth < 375) {
+    photoWidth = "width36";
+  }
   var prefix = "https://api.foursquare.com/v2/venues/";
   var suffix = "/photos?client_id=0G5RS5KJQLRKGBBO5WZUH1H1SNMWBNWBTENS03AKKAB0ZA30&client_secret=DCIZDOFW11PNDHPODTKNZFJI0YL0VKOC32FTXPMBYLEZJLN1&v=20130815";
 
@@ -141,9 +154,9 @@ var photoWine = function(venueId, infoBubble, indexTab) {
     for (var i = 0; i < count; i++) {
       prefix = results.response.photos.items[i].prefix;
       suffix = results.response.photos.items[i].suffix;
-      uri = prefix + "width300" + suffix;
+      uri = prefix + photoWidth + suffix;
       contentString += '<img src="' + uri + '" alt="Foursquare photo">';
-      contentString += '<br>';
+      contentString += '<br><br>';
     }
     infoBubble.updateTab(indexTab, "Photos", contentString);
   };
@@ -167,14 +180,13 @@ var map;
 var initMap = function() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
-      lat: 38.5000,
-      lng: -122.3200
+      lat: initialLatitude,
+      lng: initialLongitude
     },
-    zoom: 10,
+    zoom: initialZoom,
     disableDefaultUI: false
   });
   map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-  //this creates a marker with a letter inside it
 
   var image = 'images/wine-icon-2.png';
   var placeMarker = function(myLatLng, name, phoneNumber, address, website, venueId) {
@@ -187,20 +199,22 @@ var initMap = function() {
     });
 
     //this makes an info Bubble for each marker
-    var contentString = '<div id="content">' +
+    var contentString = '<div id="contentWinery">' +
       '<div id="siteNotice">' +
-      '</div>' +
-      '<h3 id="firstHeading" class="firstHeading">' + name + '</h3>' + '</div>' +
-      '<a href="' + website + '" class="website" target="_blank">' + website + '</a>' +
+      '<h5>' +
+      '<a href="' + website + '" class="website" target="_blank">' + name + '</a>' +
+      '</h5>' +
       '<h5 id="phoneNumber" class="number">' + phoneNumber + '</h5>' + '</div>' +
       '<h5 id="address" class="address1">' + address + '</h5>' + '</div>';
 
     //creating infobubble and style
+    var maxWidths = windowWidth * 0.25;
+
     var infoBubble = new InfoBubble({
       minHeight: 250,
       maxHeight: 250,
-      minWidth: 325,
-      maxWidth: 400,
+      minWidth: maxWidths,
+      maxWidth: maxWidths,
       borderRadius: 0,
       arrowStyle: 1,
       shadowStyle: 0,
@@ -239,8 +253,8 @@ var initMap = function() {
       }
       marker.setIcon('images/wine-icon-2.png');
       openInfoBubble = null;
-      map.setCenter(new google.maps.LatLng(38.5000, -122.3200));
-      map.setZoom(10);
+      map.setCenter(new google.maps.LatLng(initialLatitude, initialLongitude));
+      map.setZoom(initialZoom);
     });
 
     /* method to center map based on the location*/
@@ -266,17 +280,14 @@ var initMap = function() {
       modelWineries()[i].clickMarker = newMarkerObj.clickMarker;
     }
   };
-
 };
 
-if (localStorage) {
-  console.log("localStorage is set");
+if (modelLoaded) {
   ko.applyBindings(initMap, document.getElementById('mapWine'));
   //loads weather
   weatherWine();
   makeMarkers();
 } else {
-console.log("localStorage not set");
   //checkes to see that ajax call completes then creates the markers
   $(document).ajaxComplete(function(event, xhr, settings) {
     if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
