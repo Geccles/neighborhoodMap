@@ -3,6 +3,20 @@
   height: 800px;
 }
 
+.grapeBunch {
+  width:30px;
+  height:30px;
+  margin-right: .25em;
+  -ms-transform: rotate(7deg); /* IE 9 */
+  -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+  transform: rotate(7deg);
+}
+
+.title {
+  color: #6F7D8C;
+  padding-left: 1%;
+}
+
 #DocumentList {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -15,20 +29,35 @@
   padding-left: 10%;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
 h2 {
   text-align: center;
-  padding: 5%;
+  padding: 1%;
 }
 
 .section {
   border-top: 3px solid #323949;
+  padding-top: 10%;
 }
 
 .weatherSection {
   text-align: center;
 }
 .footer {
-  padding-top: 40%;
+  padding-top: 50%;
   text-align: center;
 }
 
@@ -88,11 +117,6 @@ nav {
   right: 0;
 }
 
-.title {
-  color: #6F7D8C;
-  padding-left: 2%;
-}
-
 body.nav-expanded {
   margin-left: 0em;
   transition: right 0.4s ease-in-out 0s;
@@ -106,7 +130,6 @@ body.nav-expanded {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 300;
   font-size: 24px;
-  padding-right: 5%;
   color: #6F7D8C;
 }
 

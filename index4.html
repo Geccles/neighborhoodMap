@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
+<!--The Grape bunnch Icon made by Freepik from www.flaticon.com-->
 
 <head>
   <title>Simple Map</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css"></link>
   <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css"></link>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css"></link>
 </head>
+
+<!--Map Section-->
 
 <body class="nav-expanded">
   <div class="section4">
@@ -17,44 +22,46 @@
       <div id="map"></div>
     </div>
   </div>
-
+  <!--Nav bar on the top-->
   <div class="navbar navbar-inverse navbar-fixed-top">
-
-      <!--Include your brand here-->
-      <h4 class="title">Wine About It</h4>
-      <div class="navbar-header pull-right">
-        <a id="nav-expander" class="nav-expander fixed navHover">
+    <!--Title-->
+    <h4 class="title">
+      <img src="images/bunch3.png" alt="Grape Bunch Image" class="grapeBunch">Wine About It</h4>
+    <!--Nav Menu-->
+    <div class="navbar-header pull-right">
+      <a id="nav-expander" class="nav-expander fixed navHover">
           MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
         </a>
-      </div>
-  </div>
-<nav>
-
-  <ul class="list-unstyled main-menu">
-    <!--Include your navigation here-->
-    <li class="text-right"><a href="#" id="nav-close"><i class="fa fa-times fa fa-lg"></i></a></li>
-    <h2 class="section">Wine About It<h2>
-
-    <li><input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'"/></li>
-
-
-    <h2 class="wineryList section">Wineries</h2>
-    <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
-      <div data-bind="text: name, click: clickWine"></div>
-    </ul>
-
-    <h2 id="weather" class="weatherData section">Weather</h2>
-    <div class="weatherIcon weatherSection" data-bind="html: icon_url"></div>
-    <div class="weatherText weatherSection" data-bind="text: weather" ,></div>
-    <div class="temp weatherSection" data-bind="text: temperature_string"></div></li>
-
-    <div class="footer">
-      <h4>Copyright © Galina Eccles 2016.</h4>
     </div>
-  </ul>
-</nav>
-
-
+  </div>
+  <nav>
+    <!--Beginning of the inside of the Menu-->
+    <ul class="list-unstyled main-menu">
+      <!--The X to close out Menu Nav-->
+      <li class="text-right"><a href="#" id="nav-close"><i class="fa fa-times fa fa-lg"></i></a></li>
+      <!--The X to close out Menu Nav-->
+      <h2 class="section">Wine About It
+        <h2>
+          <li>
+            <input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+          </li>
+          <!--The Winery List in the Menu Nav-->
+          <h2 class="wineryList section">Wineries</h2>
+          <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
+            <div data-bind="text: name, click: clickWine"></div>
+          </ul>
+          <!--The Weather Section in the Menu Nav-->
+          <h2 id="weather" class="weatherData section">Weather</h2>
+          <div class="weatherIcon weatherSection" data-bind="html: icon_url"></div>
+          <div class="weatherText weatherSection" data-bind="text: weather" ,></div>
+          <div class="temp weatherSection" data-bind="text: temperature_string"></div>
+          </li>
+          <!--The Copyright footer in the Menu Nav-->
+          <div class="footer">
+            <h4>Copyright © Galina Eccles 2016.</h4>
+          </div>
+    </ul>
+  </nav>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/knockout-3.4.0.js"></script>
