@@ -14,59 +14,51 @@
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css"></link>
 </head>
 
-
-<body class="nav-expanded nav-bar-collapse nav-collapse">
-
-
-
-
-
-
-
-
+<body class="bodyWine wrapper">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!--Brand and toggle get grouped for better mobile display-->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-nav-collapse" aria-expaned="false">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img src="images/bunch3.png" alt="Grape Bunch Image" class="grapeBunch">Wine About It</h4>
+      </div>
+    </div>
+  </nav>
 
   <!--Nav bar on the top-->
-  <div id="headerContainer" class="navbar navbar-inverse navbar-fixed-top">
-    <!--Title-->
-    <h4 class="title">
-      <img src="images/bunch3.png" alt="Grape Bunch Image" class="grapeBunch">Wine About It</h4>
-    <!--Nav Menu-->
-    <div class="navbar-header dropdown-menu-right">
-      <a id="nav-expander" class="nav-expander fixed navHover">
-          MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
-        </a>
-    </div>
-  </div>
-  <nav>
-    <!--Beginning of the inside of the Menu-->
-    <ul class="list-unstyled main-menu">
-      <!--The X to close out Menu Nav-->
-      <li class="text-right"><a href="#" id="nav-close"><i class="fa fa-times fa fa-lg"></i></a></li>
-      <!--The X to close out Menu Nav-->
-      <h2 class="section">Wine About It
+  <div class="collapse navbar-collapse main-nav-collapse">
+    <div class="col-xs-4">
+      <h2>Wine About It
         <h2>
-          <li>
-            <input class="inputBox" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
-          </li>
-          <!--The Winery List in the Menu Nav-->
-          <h2 class="wineryList section">Wineries</h2>
-          <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
-            <div data-bind="text: name, click: clickWine"></div>
-          </ul>
-          <!--The Weather Section in the Menu Nav-->
-          <h2 id="weather" class="weatherData section">Weather</h2>
-          <div class="weatherIcon weatherSection" data-bind="html: icon_url"></div>
-          <div class="weatherText weatherSection" data-bind="text: weather" ,></div>
-          <div class="temp weatherSection" data-bind="text: temperature_string"></div>
-          </li>
-          <!--The Copyright footer in the Menu Nav-->
-          <div class="footer">
-            <h1 class="copyright">Copyright © Galina Eccles 2016.</h1>
-          </div>
-    </ul>
-  </nav>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Winery filter..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+            </div>
+          </form>
+    </div>
+    <!--The Winery List in the Menu Nav-->
+    <div class="col-xs-4">
+      <h2>Wineries</h2>
+      <ul id="DocumentList" class="wineryName" data-bind="foreach: filteredItems">
+        <div data-bind="text: name, click: clickWine"></div>
+      </ul>
+    </div>
+    <!--The Weather Section in the Menu Nav-->
+    <div id="weather" class="col-xs-4">
+      <h2>Weather</h2>
+      <div class="weatherIcon weatherSection" data-bind="html: icon_url"></div>
+      <div class="weatherText weatherSection" data-bind="text: weather"></div>
+      <div class="temp weatherSection" data-bind="text: temperature_string"></div>
+    </div>
+    </li>
+  </div>
   <!--Map Section-->
-    <div id="map" class="col-md-11"></div>
+  <div id="map" class="col-md-11"></div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/knockout-3.4.0.js"></script>
@@ -76,4 +68,5 @@
   <script src="js/lscache.js"></script>
   <script src="js/script.js"></script>
 </body>
+
 </html>

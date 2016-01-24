@@ -1,187 +1,5 @@
-
-.grapeBunch {
-  width:30px;
-  height:30px;
-  margin-right: 1%;
-  -ms-transform: rotate(7deg); /* IE 9 */
-  -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
-  transform: rotate(7deg);
-}
-
-.title {
-  color: #6F7D8C;
-  padding-left: 1%;
-}
-
-#DocumentList {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 100px;
-  -webkit-padding-start: 0;
-  -webkit-margin-after: 0;
-  -webkit-margin-before: 0;
-  width: 100%;
-  margin: auto;
-  padding-left: 10%;
-}
-
-::-webkit-scrollbar {
-    width: 15px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px ;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px #6F7D8C;
-}
-
-ul#DocumentList.wineryName {
-  height: 150px;
-  padding-right: 10%;
-}
-
-h2 {
-  text-align: center;
-  padding: 1%;
-}
-
-.section {
-  border-top: 3px solid #323949;
-  padding-top: 10%;
-}
-
-.weatherSection {
-  text-align: center;
-}
-
-.copyright {
-  text-align: center;
-  font-size: 80%;
-}
-
-a.nav-expander {
-background: none repeat scroll 0 0 #000000;
-color: #6F7D8C;
-display: block;
-font-size: 100%;
-font-weight: 400;
-height: 7%;
-margin-right: 0;
-padding: 1% 1.6% 2%;
-position: absolute;
-right: 0;
-text-decoration: none;
-text-transform: uppercase;
-top: 0;
-transition: right 0.3s ease-in-out 0s;
-width: 10%;
-z-index: 12;
-transition: right 0.3s ease-in-out 0s;
--webkit-transition: right 0.3s ease-in-out 0s;
--moz-transition: right 0.3s ease-in-out 0s;
--o-transition: right 0.3s ease-in-out 0s;
-}
-
-.nav-expander:hover {
-cursor: pointer;
-}
-
-a.nav-expander.fixed {
-position: fixed;
-}
-
-.nav-expanded a.nav-expander.fixed {
-  right: 18%;
-}
-
-nav {
-  background: #2d2f33;
-  display: block;
-  height: 100%;
-  overflow: auto;
-  position: fixed;
-  right: -18%;
-  font-size: 100%;
-  top: 0;
-  width: 18%;
-  z-index: 2000;
-  transition: right 0.3s ease-in-out 0s;
-  -webkit-transition: right 0.3s ease-in-out 0s;
-  -moz-transition: right 0.3s ease-in-out 0s;
-  -o-transition: right 0.3s ease-in-out 0s;
-
-}
-.nav-expanded nav {
-  right: 0;
-}
-
-body.nav-expanded {
-  transition: right 0.4s ease-in-out 0s;
-  -webkit-transition: right 0.4s ease-in-out 0s;
-  -moz-transition: right 0.4s ease-in-out 0s;
-  -o-transition: right 0.4s ease-in-out 0s;
-  color: #6F7D8C;
-}
-
-#nav-close {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: 300;
-  font-size: 100%;
-  color: #6F7D8C;
-}
-
-#nav-close:hover {
-  color: #FFFFFF;
-}
-
-.main-menu {
-  padding-top: 10%;
-}
-
-.main-menu li {
-  margin-left: 2%;
-  font-size: 65%;
-  padding: 3%;
-}
-
-li.text-right {
-  padding: 0%;
-  padding-right: 10%;
-}
-
-.navHover:hover {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.main-menu li {
-  border-bottom: 0%;
-  padding: 2%;
-}
-
-.main-menu a .caret {
-	display: inline-block;
-	vertical-align: top;
-	border-top: 3% solid #4f5963;
-}
-
-.icon:before {
-  font-family: 'FontAwesome';
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  text-transform: none;
-  content: '\f105';
-}
-
 html {
- height: 100%;
-
+ height: 80%;
 }
 
 body {
@@ -194,18 +12,25 @@ body {
 
 #map {
  width: 100%;
- height: 100%
+ height: 85%;
+ margin-top: 2%;
 }
 
-@media (max-width: 750px) {
+.form-group {
+  font-size: 50%;
 
-  nav {
-    width: 15%;
-    font-size: 55%;
-  }
-  .section {
-    font-size: 70%;
-  }
+}
 
 
+
+#DocumentList {
+  height: 80px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+h2 {
+  text-align: center;
+  font-size: 55%;
+  font-family: helvetica;
 }
