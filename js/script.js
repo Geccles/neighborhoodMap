@@ -103,7 +103,7 @@ var weatherWine = function() {
   var success = function(results) {
     if (!results.response.error) {
       var uri = results.current_observation.icon_url;
-      var imageLink = '<img src="' + uri + '" alt="Weather icon">';
+      var imageLink = '<img class="img-responsive" src="' + uri + '" alt="Weather icon">';
       weather(results.current_observation.weather);
       temperature_string(results.current_observation.temperature_string);
       icon_url(imageLink);

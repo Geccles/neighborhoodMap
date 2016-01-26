@@ -1,36 +1,76 @@
 html {
- height: 80%;
+  height: 100%;
+  font-size: 10px;
 }
-
 body {
- height: 100%;
+  height: 90%;
+  font-size: 10px;
 }
-
+@media (min-width: 375px) {
+html body {
+    font-size: 11px;
+}
+}
+@media (min-width: 768px) {
+  html body{
+    font-size: 12px;
+  }
+}
+@media (min-width: 1024px) {
+  html body{
+    font-size: 14px;
+  }
+}
+@media (min-width: 1280px) {
+html body{
+    font-size: 16px;
+}
+}
+.form-control {
+  font-size: 1.5rem;
+}
 #headerContainer {
- height: 7%;
+  height: 7%;
 }
-
 #map {
- width: 100%;
- height: 85%;
- margin-top: 2%;
+  width: 100%;
+  height: 85%;
+  margin-top: 2%;
 }
-
 .form-group {
   font-size: 50%;
-
 }
-
-
-
 #DocumentList {
   height: 80px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
+.navbar {
+  margin-bottom: 0;
+}
 
-h2 {
-  text-align: center;
-  font-size: 55%;
-  font-family: helvetica;
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right: 1.3rem;
+    padding-left: 0.3rem;
+}
+
+.grapeBunch {
+  -ms-transform: rotate(7deg); /* IE 9 */
+      -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+      transform: rotate(7deg);
+}
+
+.titleWine {
+  font-size: 2rem;
+  margin-left: 1rem;
 }
