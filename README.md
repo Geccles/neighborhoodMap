@@ -22,6 +22,6 @@ Along with creating my own API I included WeatherUnderground API and Foursquare 
 - knockout.js
 - knockout.js mapping
 - lscache
-- - Map icons
+- Map icons
 - WeatherUnderground API
 
