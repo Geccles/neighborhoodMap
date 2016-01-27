@@ -16,4 +16,12 @@ Along with creating my own API I included WeatherUnderground API and Foursquare 
 
 ## Resources
 
+- Foursquare API
+- Google Maps
+- jQuery
+- knockout.js
+- knockout.js mapping
+- lscache
+- - Map icons
+- WeatherUnderground API
 
