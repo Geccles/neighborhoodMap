@@ -5,30 +5,33 @@ html {
 body {
   height: 90%;
   font-size: 10px;
+  background-color: #91575b;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.search {
+  font-size: 1rem;
 }
 @media (min-width: 375px) {
-html body {
+html body .search{
     font-size: 11px;
 }
 }
 @media (min-width: 768px) {
-  html body{
+  html body {
     font-size: 12px;
   }
 }
 @media (min-width: 1024px) {
-  html body{
+  html body {
     font-size: 14px;
   }
 }
 @media (min-width: 1280px) {
-html body{
+html body {
     font-size: 16px;
 }
 }
-.form-control {
-  font-size: 1.5rem;
-}
+
 #headerContainer {
   height: 7%;
 }
@@ -41,12 +44,29 @@ html body{
   font-size: 50%;
 }
 #DocumentList {
+  padding-top: .5em;
   height: 80px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
 .navbar {
   margin-bottom: 0;
+  background-color: #579170;
+  border-color: #579170;
+  border-radius: 0 !important;
 }
 
 ul, menu, dir {
@@ -73,4 +93,25 @@ ul, menu, dir {
 .titleWine {
   font-size: 2rem;
   margin-left: 1rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+#address {
+  font-size: 12px;
+  color: #91575b;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#phoneNumber {
+  font-size: 12px;
+  color: #579170;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.website {
+  color: #416c54;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Source Sans Pro', sans-serif;
 }

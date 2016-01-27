@@ -128,9 +128,7 @@ var photoWine = function(venueId, infoBubble, indexTab) {
   if(windowWidth < 800) {
     photoWidth = "width100";
   }
-  if(windowWidth < 375) {
-    photoWidth = "width36";
-  }
+
   var prefix = "https://api.foursquare.com/v2/venues/";
   var suffix = "/photos?client_id=0G5RS5KJQLRKGBBO5WZUH1H1SNMWBNWBTENS03AKKAB0ZA30&client_secret=DCIZDOFW11PNDHPODTKNZFJI0YL0VKOC32FTXPMBYLEZJLN1&v=20130815";
 
@@ -208,7 +206,7 @@ var initMap = function() {
       '<h5 id="address" class="address1">' + address + '</h5>' + '</div>';
 
     //creating infobubble and style
-    var maxWidths = windowWidth * 0.25;
+    var maxWidths = windowWidth * 0.5;
 
     var infoBubble = new InfoBubble({
       minHeight: 250,
