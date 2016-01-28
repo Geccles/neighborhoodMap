@@ -59,6 +59,7 @@ var loadMyData = function() {
       modelWineries().push(localStorage[i]);
     }
     modelLoaded = true;
+    mapReady();
   }
 };
 

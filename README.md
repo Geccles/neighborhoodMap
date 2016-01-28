@@ -20,11 +20,14 @@ The app interacts with the user in the following ways:
 [Wine About It](http://verdantshades.com/neighborhoodmap/)
 
 ### Installation
-- $ `npm install`
-- $ `gulp`
+1. Download the repository
+2. The compiled webapp is in the dist folder
+3. Open index.html in a browser
 
 ### Build From The Project's Root
 
+- $ `npm install`
+- $ `gulp`
 
 ### Resources
 

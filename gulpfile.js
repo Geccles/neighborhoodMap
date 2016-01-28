@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var minifyHTML = require('gulp-minify-html');
+var del = require('del');
 
 gulp.task('copy-images', function () {
   gulp.src(['images/*'])
@@ -38,6 +39,12 @@ gulp.task('minify-html', function() {
   return gulp.src(['index.html'])
     .pipe(minifyHTML(opts))
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean', function () {
+    return del([
+        'dist/**/*',
+    ]);
 });
 
 gulp.task('default', ['copy-images', 'copy-bootstrap', 'copy-fa', 'minify-css', 'minify-js', 'minify-html']);
