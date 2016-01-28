@@ -1715,7 +1715,7 @@ InfoBubble.prototype.figureOutSize_ = function() {
 
   if (this.tabsContainer_) {
     this.tabHeight_ = tabHeight;
-    this.tabsContainer_.style['width'] = this.px(tabWidth);
+    //this.tabsContainer_.style['width'] = this.px(tabWidth);
   }
 
   this.contentContainer_.style['width'] = this.px(width);

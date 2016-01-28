@@ -97,13 +97,18 @@ ul, menu, dir {
   font-weight: 700;
 }
 
-#address {
+.address1 {
+  font-size: 12px;
+  color: #91575b;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.address2 {
   font-size: 12px;
   color: #91575b;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-#phoneNumber {
+.phoneNumber {
   font-size: 12px;
   color: #579170;
   font-family: 'Source Sans Pro', sans-serif;

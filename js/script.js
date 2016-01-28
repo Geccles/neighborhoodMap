@@ -13,7 +13,7 @@ var initialLongitude = -122.396604;
 
 // Returns width of browser viewport
 var windowWidth = $( window ).width();
-var windowHeight = $( window ).width();
+var windowHeight = $( window ).height();
 
 //This loads my data
 var loadMyData = function() {
@@ -128,6 +128,9 @@ var photoWine = function(venueId, infoBubble, indexTab) {
   if(windowWidth < 800) {
     photoWidth = "width100";
   }
+  if(windowWidth < 375) {
+    photoWidth = "width66";
+  }
 
   var prefix = "https://api.foursquare.com/v2/venues/";
   var suffix = "/photos?client_id=0G5RS5KJQLRKGBBO5WZUH1H1SNMWBNWBTENS03AKKAB0ZA30&client_secret=DCIZDOFW11PNDHPODTKNZFJI0YL0VKOC32FTXPMBYLEZJLN1&v=20130815";
@@ -182,7 +185,9 @@ var initMap = function() {
       lng: initialLongitude
     },
     zoom: initialZoom,
-    disableDefaultUI: false
+    disableDefaultUI: false,
+    streetViewControl: false,
+    mapTypeControl: false
   });
   map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
 
@@ -197,20 +202,29 @@ var initMap = function() {
     });
 
     //this makes an info Bubble for each marker
+    var addressArray =  address.split(',');
     var contentString = '<div id="contentWinery">' +
       '<div id="siteNotice">' +
-      '<h5>' +
+      '<p>' +
       '<a href="' + website + '" class="website" target="_blank">' + name + '</a>' +
-      '</h5>' +
-      '<h5 id="phoneNumber" class="number">' + phoneNumber + '</h5>' + '</div>' +
-      '<h5 id="address" class="address1">' + address + '</h5>' + '</div>';
+      '</p>' +
+      '<p class="number">' + phoneNumber + '</p>' + '</div>' +
+      '<p class="address1">' + addressArray[0] + '</p>' +
+      '<p class="address2">' + addressArray[1] + ',' + addressArray[2] + '</div>';
 
     //creating infobubble and style
-    var maxWidths = windowWidth * 0.5;
+    var maxWidths = windowWidth * 0.4;
+    if(windowWidth > 800){
+      maxWidths = windowWidth * 0.25;
+    }
+    var maxHeights = windowHeight * 0.5;
+    if(windowHeight > 600){
+      maxHeights = windowHeight * 0.25;
+    }
 
     var infoBubble = new InfoBubble({
-      minHeight: 250,
-      maxHeight: 250,
+      minHeight: maxHeights,
+      maxHeight: maxHeights,
       minWidth: maxWidths,
       maxWidth: maxWidths,
       borderRadius: 0,
