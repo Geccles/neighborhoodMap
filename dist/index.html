@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><title>Simple Map</title><meta name=viewport content="initial-scale=1.0"><meta charset=utf-8><link rel=icon href=images/favicon.ico type=image/x-icon><link rel="shortcut icon" href=images/favicon.ico type=image/x-icon><meta name=viewport content="width=device-width, initial-scale=1"><link rel=stylesheet href=css/style.css><link rel=stylesheet href=font-awesome-4.5.0/css/font-awesome.css><link rel=stylesheet href=bootstrap/css/bootstrap.css><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel=stylesheet type=text/css><link rel=stylesheet href=css/style.css></head><body class="bodyWine wrapper"><nav class="navbar navbar-default"><div class=container-fluid><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=.main-nav-collapse aria-expaned=false><span class=sr-only>Toggle Navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <img src=images/bunch3.png alt="Grape Bunch Image" class=grapeBunch><span class=titleWine>Wine About It</span></div></div></nav><div class=container-fluid><div class="collapse navbar-collapse main-nav-collapse"><div class="row no-gutter"><div class=col-xs-3><input type=text class="form-control pull-down search" placeholder=Search... data-bind="value: filter, valueUpdate: 'afterkeydown'"></div><div class=col-xs-6><div class=yes><ul id=DocumentList class="wineryName pull-down" data-bind="foreach: filteredItems"><div data-bind="text: name, click: clickWine"></div></ul></div></div><div class=col-xs-1></div><div id=weather class=col-xs-2><div class="weatherIcon weatherSection" data-bind="html: icon_url"></div><div class="weatherText weatherSection" data-bind="text: weather"></div><div class="temp weatherSection" data-bind="text: temperature_string"></div></div></div></div></div><div id=map class=col-md-11></div><script src=js/jquery.min.js></script><script src=js/knockout-3.4.0.js></script><script src=bootstrap/js/bootstrap.min.js></script><script src=js/infobubble.js></script><script src=js/lscache.js></script><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A"></script><script src=js/script.js></script><script>
+    //make top text appear aligned to bottom:
+    //http://stackoverflow.com/questions/13841387/how-do-i-bottom-align-grid-elements-in-bootstrap-fluid-layout
+    !function ($) { //ensure $ always references jQuery
+      $(function () { //when dom has finished loading
+          function fixHeader() {
+              //for each element that is classed as 'pull-down'
+              //reset margin-top for all pull down items
+              $('.pull-down').each(function () {
+                  $(this).css('margin-top', 0);
+              });
+
+              //set its margin-top to the difference between its own height and the height of its parent
+              $('.pull-down').each(function () {
+                  if ($(window).innerWidth() >= 768) {
+                      $(this).css('margin-top', $(this).parent().height() - $(this).height());
+                  }
+                  else {
+                      $(this).css('margin-top', 20);
+                  }
+              });
+          }
+
+          $(window).resize(function () {
+              fixHeader();
+          });
+
+          fixHeader();
+      });
+  }(window.jQuery);
+  </script></body></html>

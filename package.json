@@ -1,0 +1,27 @@
+{
+  "name": "neighborhoodmap",
+  "version": "1.0.0",
+  "description": "project5",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "node": "^0.0.0"
+  },
+  "devDependencies": {
+    "gulp-minify-css": "^1.2.3",
+    "gulp-minify-html": "^1.0.5",
+    "gulp-uglify": "^1.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Geccles/neighborhoodMap.git"
+  },
+  "author": "Galina Eccles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Geccles/neighborhoodMap/issues"
+  },
+  "homepage": "https://github.com/Geccles/neighborhoodMap#readme"
+}
