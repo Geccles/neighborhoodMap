@@ -17,6 +17,7 @@ The app interacts with the user in the following ways:
 
 ### Live Demo
 
+[Wine About It](http://verdantshades.com/neighborhoodmap/)
 
 ### Installation
 - $ `npm install`
