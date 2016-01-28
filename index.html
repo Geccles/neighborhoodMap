@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-<!--The Grape bunnch Icon made by Freepik from www.flaticon.com-->
+<!--The Grape bunch Icon made by Freepik from www.flaticon.com-->
+<!--This is for creating the mapMarkers https://mapicons.mapsmarker.com/-->
+<!--This is the wesbite I used to get information about the wineries http://www.visitnapavalley.com/wineries_in_napa_valley.htm?Options=115&Options=117-->
 
 <head>
   <title>Simple Map</title>
@@ -69,8 +71,8 @@
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="js/infobubble.js"></script>
   <script src="js/lscache.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A"></script>
   <script src="js/script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=loadMyData" async></script>
 
   <script>
     //make top text appear aligned to bottom:
@@ -102,7 +104,6 @@
       });
     }(window.jQuery);
   </script>
-
 </body>
 
 </html>

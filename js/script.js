@@ -12,11 +12,12 @@ var initialLatitude = 38.460694;
 var initialLongitude = -122.396604;
 
 // Returns width of browser viewport
-var windowWidth = $( window ).width();
-var windowHeight = $( window ).height();
+var windowWidth = $(window).width();
+var windowHeight = $(window).height();
 
 //This loads my data
 var loadMyData = function() {
+
   var localStorage = lscache.get('modelWineries');
   if (localStorage === null) {
 
@@ -36,6 +37,7 @@ var loadMyData = function() {
       }
       lscache.set('modelWineries', response, 1);
       modelLoaded = true;
+      mapReady();
     };
 
     var err = function(req, status, err) {
@@ -58,7 +60,7 @@ var loadMyData = function() {
     }
     modelLoaded = true;
   }
-}();
+};
 
 //click on a winery in the wine list goes to the marker
 var clickWine = function() {
@@ -125,10 +127,10 @@ var weatherWine = function() {
 //retrieves photos from foursquare from each winery
 var photoWine = function(venueId, infoBubble, indexTab) {
   var photoWidth = "width300";
-  if(windowWidth < 800) {
+  if (windowWidth < 800) {
     photoWidth = "width100";
   }
-  if(windowWidth < 375) {
+  if (windowWidth < 375) {
     photoWidth = "width66";
   }
 
@@ -202,7 +204,7 @@ var initMap = function() {
     });
 
     //this makes an info Bubble for each marker
-    var addressArray =  address.split(',');
+    var addressArray = address.split(',');
     var contentString = '<div id="contentWinery">' +
       '<div id="siteNotice">' +
       '<p>' +
@@ -214,11 +216,11 @@ var initMap = function() {
 
     //creating infobubble and style
     var maxWidths = windowWidth * 0.4;
-    if(windowWidth > 800){
+    if (windowWidth > 800) {
       maxWidths = windowWidth * 0.25;
     }
     var maxHeights = windowHeight * 0.5;
-    if(windowHeight > 600){
+    if (windowHeight > 600) {
       maxHeights = windowHeight * 0.25;
     }
 
@@ -293,20 +295,22 @@ var initMap = function() {
     }
   };
 };
-
-if (modelLoaded) {
-  ko.applyBindings(initMap, document.getElementById('mapWine'));
-  //loads weather
-  weatherWine();
-  makeMarkers();
-} else {
-  //checkes to see that ajax call completes then creates the markers
-  $(document).ajaxComplete(function(event, xhr, settings) {
-    if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
-      ko.applyBindings(initMap, document.getElementById('mapWine'));
-      //loads weather
-      weatherWine();
-      makeMarkers();
-    }
-  });
-}
+mapReady = function() {
+  //if initMap succeeds then this will run
+  if (modelLoaded) {
+    ko.applyBindings(initMap, document.getElementById('mapWine'));
+    //loads weather
+    weatherWine();
+    makeMarkers();
+  } else {
+    //checkes to see that ajax call completes then creates the markers
+    $(document).ajaxComplete(function(event, xhr, settings) {
+      if (settings.url === "http://eccleshome.com/winery-project/api.php/wineries") {
+        ko.applyBindings(initMap, document.getElementById('mapWine'));
+        //loads weather
+        weatherWine();
+        makeMarkers();
+      }
+    });
+  }
+};
