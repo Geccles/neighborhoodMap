@@ -5,12 +5,12 @@
 <!--This is the wesbite I used to get information about the wineries http://www.visitnapavalley.com/wineries_in_napa_valley.htm?Options=115&Options=117-->
 
 <head>
-  <title>Simple Map</title>
+  <title>Neighborhood Map</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css"></link>
   <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css"></link>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css"></link>
@@ -72,7 +72,7 @@
   <script src="js/infobubble.js"></script>
   <script src="js/lscache.js"></script>
   <script src="js/script.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=loadMyData" async></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJLbZbK29zCw1xaxKWU1S0mDmIl8OA-5A&callback=loadMyData" async onerror="googleError()"></script>
 
   <script>
     //make top text appear aligned to bottom:

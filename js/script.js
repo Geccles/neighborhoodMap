@@ -315,3 +315,7 @@ mapReady = function() {
     });
   }
 };
+
+googleError = function(){
+  alert("Error loading google map");
+};
