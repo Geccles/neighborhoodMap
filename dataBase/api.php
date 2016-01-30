@@ -3,7 +3,6 @@
 /* This should solve the reviewers issue to get content */
 header('Access-Control-Allow-Origin: *');
 /*
-header("Access-Control-Allow-Origin: http://localhost:8080");
 header("Access-Control-Allow-Origin: http://verdantshades.com");
 */
 
