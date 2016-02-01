@@ -76,7 +76,7 @@ var filteredItems = ko.computed(function() {
   } else {
     return ko.utils.arrayFilter(modelWineries(), function(item) {
       //returns the names only that match that filter string
-      return (item.name.toLowerCase().indexOf(myFilter) > -1);
+      return (item.name.toLowerCase().indexOf(myFilter) === 0);
     });
   }
 }, modelWineries, {
@@ -162,7 +162,7 @@ var photoWine = function(venueId, infoBubble, indexTab) {
       contentString += '<img src="' + uri + '" alt="Foursquare photo">';
       contentString += '<br><br>';
     }
-    infoBubble.updateTab(indexTab, "Photos", contentString);
+    infoBubble.updateTab(indexTab, "<span class='wineTab'>Photos</span>", contentString);
   };
 
   var err = function(req, status, err) {
@@ -238,7 +238,7 @@ var initMap = function() {
     });
 
     //first tab for content on InfoBubble
-    infoBubble.addTab('Winery', contentString);
+    infoBubble.addTab('<span class="wineTab">Winery</span>', contentString);
 
     //second tab for photos on InfoBubble
     infoBubble.addTab('Photos', "Here are photos");

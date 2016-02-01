@@ -1,34 +1,26 @@
 html {
   height: 100%;
-  font-size: 10px;
+  font-size: 14px;
 }
 body {
   height: 90%;
-  font-size: 10px;
+  font-size: 14px;
   background-color: #91575b;
   font-family: 'Source Sans Pro', sans-serif;
+  color: #ddd;
 }
 .search {
   font-size: 1rem;
 }
-@media (min-width: 375px) {
-  html body .search {
-    font-size: 11px;
-  }
-}
-@media (min-width: 768px) {
-  html body {
-    font-size: 12px;
-  }
-}
+
 @media (min-width: 1024px) {
   html body {
-    font-size: 14px;
+    font-size: 20px;
   }
 }
 @media (min-width: 1280px) {
   html body {
-    font-size: 16px;
+    font-size: 24px;
   }
 }
 .map {
@@ -75,6 +67,13 @@ ul, menu, dir {
   padding-right: 1.3rem;
   padding-left: 0.3rem;
 }
+
+@media (min-width: 360px) {
+.no-gutter > [class*='col-']{
+  padding-right: 1rem;
+  padding-left: 0.3rem;
+}
+}
 .grapeBunch {
   -ms-transform: rotate(7deg);
   /* IE 9 */
@@ -89,23 +88,33 @@ ul, menu, dir {
   font-weight: 700;
 }
 .address1 {
-  font-size: 12px;
+  font-size: 14px;
   color: #91575b;
   font-family: 'Source Sans Pro', sans-serif;
 }
 .address2 {
-  font-size: 12px;
+  font-size: 14px;
   color: #91575b;
   font-family: 'Source Sans Pro', sans-serif;
 }
-.phoneNumber {
-  font-size: 12px;
+.number {
+  font-size: 14px;
   color: #579170;
   font-family: 'Source Sans Pro', sans-serif;
 }
 .website {
   color: #416c54;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar-toggle {
+  background-color: #fff;
+}
+
+.wineTab {
+  font-size: 16px;
+  color: #579170;
   font-family: 'Source Sans Pro', sans-serif;
 }
