@@ -10,17 +10,13 @@ var localStorage = null;
 var initialZoom = 10;
 var initialLatitude = 38.460694;
 var initialLongitude = -122.396604;
-var townList = ko.observableArray([{
-  name: 'Calistoga'
-}, {
-  name: 'Napa'
-}, {
-  name: 'Pope Valley'
-}, {
-  name: 'Rutherford'
-}, {
-  name: 'St. Helena'
-}]);
+var townList = ko.observableArray ([
+  { name: 'Calistoga'},
+  { name: 'Napa'},
+  { name: 'Pope Valley'},
+  { name: 'Rutherford'},
+  { name: 'St. Helena'}
+]);
 var selectedTown = ko.observable('');
 var wineryFilter = ko.observable(true);
 
@@ -82,7 +78,7 @@ var clickWine = function() {
 };
 
 //dropdown for towns
-var clickTown = function() {
+var clickTown = function(){
   selectedTown(this.name);
   wineryFilter(false);
 };
@@ -114,19 +110,23 @@ filteredItems.subscribe(function(newList) {
 
 //filter Towns
 var filteredTowns = ko.computed(function() {
-  var newList = [];
+  return ko.utils.arrayFilter(modelWineries(), function(item) {
+    //returns the names only that match that filter string
+    return (item.address.indexOf(selectedTown()) > -1);
+  });
+}, modelWineries, {
+  deferEvaluation: true
+});
+
+//removes marker when towns are filtered
+filteredTowns.subscribe(function(newList) {
+  console.log(newList);
   for (var i = 0; i < modelWineries().length; i++) {
     modelWineries()[i].marker.setVisible(false);
   }
-  for (var j = 0; j < modelWineries().length; j++) {
-    if (modelWineries()[j].address.indexOf(selectedTown()) > -1) {
-      modelWineries()[j].marker.setVisible(true);
-      newList.push(modelWineries()[j].name);
-    }
+  for (var j = 0; j < newList.length; j++) {
+    newList[j].marker.setVisible(true);
   }
-  return newList;
-}, modelWineries, {
-  deferEvaluation: true
 });
 
 //weatherUndegroud api
@@ -351,6 +351,6 @@ mapReady = function() {
   }
 };
 
-googleError = function() {
+googleError = function(){
   alert("Error loading google map");
 };

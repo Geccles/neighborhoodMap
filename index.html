@@ -41,18 +41,39 @@
       <div class="collapse navbar-collapse main-nav-collapse">
         <div class="row no-gutter">
           <div class="col-xs-3">
-            <input type="text" class="form-control pull-down search" placeholder="Search..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
-          </div>
-          <!--The Winery List in the Menu Nav-->
-          <div class="col-xs-6">
-            <div class="yes">
-              <ul id="DocumentList" class="wineryName pull-down documentList" data-bind="foreach: filteredItems">
-                <div data-bind="text: name, click: clickWine"></div>
+            <div class="row">
+              <input type="text" class="form-control pull-down search" placeholder="Search..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+              <br>
+            </div>
+            <div class="row">
+              <div class="dropdown-toggle wineTown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Town
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu wineTowns" data-bind="foreach: townList">
+                <div class="wineTown" data-bind="text: name, click: clickTown"></div>
               </ul>
             </div>
           </div>
+          <!--The Winery List in the Menu Nav-->
+          <div class="col-xs-6">
+            <div data-bind="if: wineryFilter">
+              <div class="yes">
+                <ul id="DocumentList" class="wineryName documentList" data-bind="foreach: filteredItems">
+                  <div class="documentItem" data-bind="text: name, click: clickWine"></div>
+                </ul>
+              </div>
+            </div>
+
+            <div data-bind="ifnot: wineryFilter">
+              <div class="yes">
+                <ul id="DocumentList" class="wineryName documentList" data-bind="foreach: filteredTowns">
+                  <div class="documentItem" data-bind="text: name, click: clickWine"></div>
+                </ul>
+              </div>
+            </div>
+          </div>
           <!--The Weather Section in the Menu Nav-->
-          <div id="weather" class="col-xs-3">
+          <div id="weather" class="col-xs-3 weatherWine">
             <div class="weatherIcon weatherSection" data-bind="html: icon_url"></div>
             <div class="weatherText weatherSection" data-bind="text: weather"></div>
             <div class="temp weatherSection" data-bind="text: temperature_string"></div>

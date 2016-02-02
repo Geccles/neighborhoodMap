@@ -32,10 +32,18 @@ body {
   font-size: 50%;
 }
 .documentList {
-  padding-top: .5em;
-  height: 80px;
+  margin-top: 2rem;
+  height: 8rem;
   overflow-x: hidden;
   overflow-y: scroll;
+  width: 90%;
+  padding-left: 10%;
+}
+.documentItem {
+  padding-bottom: .5rem;
+}
+.weatherWine {
+  margin-top: 2%;
 }
 ::-webkit-scrollbar {
   width: 12px;
@@ -117,4 +125,15 @@ ul, menu, dir {
   font-size: 16px;
   color: #579170;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.wineTown {
+  padding-left: 1rem;
+}
+.wineTowns {
+  color: #416c54;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-left: .5rem;
 }
