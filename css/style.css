@@ -131,7 +131,7 @@ ul, menu, dir {
   line-height: 1.3rem;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 2.2rem;
+  height: 4rem;
 }
 @media (min-width: 768px) {
   .wineTowns {

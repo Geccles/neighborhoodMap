@@ -23,7 +23,7 @@ var townList = ko.observableArray([{
 }, {
   name: 'All'
 }]);
-var selectedTown = ko.observable('');
+var selectedTown = ko.observable('All');
 var wineryFilter = ko.observable(true);
 
 // Returns width of browser viewport
@@ -85,8 +85,10 @@ var clickWine = function() {
 
 //dropdown for towns
 var clickTown = function() {
-  selectedTown(this.name);
-  wineryFilter(false);
+  if (this.name !== selectedTown()) {
+    selectedTown(this.name);
+    wineryFilter(false);
+  }
 };
 
 //filter box
@@ -118,6 +120,7 @@ filteredItems.subscribe(function(newList) {
 //filter Towns
 var filteredTowns = ko.computed(function() {
   var i;
+
   if (selectedTown() === 'All') {
     for (i = 0; i < modelWineries().length; i++) {
       modelWineries()[i].marker.setVisible(true);
@@ -136,6 +139,7 @@ var filteredTowns = ko.computed(function() {
       newList.push(modelWineries()[j]);
     }
   }
+
   return newList;
 }, modelWineries, {
   deferEvaluation: true
