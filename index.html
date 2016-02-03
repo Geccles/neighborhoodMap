@@ -69,17 +69,17 @@
           <div class="col-xs-6">
             <div data-bind="if: wineryFilter">
               <div class="yes">
-                <ul id="DocumentList" class="wineryName documentList" data-bind="foreach: filteredItems">
+                <div id="DocumentList" class="wineryName documentList" data-bind="foreach: filteredItems">
                   <div class="documentItem" data-bind="text: name, click: clickWine"></div>
-                </ul>
+                </div>
               </div>
             </div>
 
             <div data-bind="ifnot: wineryFilter">
               <div class="yes">
-                <ul id="wineryList" class="wineryName documentList" data-bind="foreach: filteredTowns">
+                <div id="wineryList" class="wineryName documentList" data-bind="foreach: filteredTowns">
                   <div class="winerylist" data-bind="text: name, click: clickWine"></div>
-                </ul>
+                </div>
               </div>
             </div>
           </div>

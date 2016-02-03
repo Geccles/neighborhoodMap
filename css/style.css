@@ -2,6 +2,7 @@ html {
   height: 100%;
   font-size: 14px;
 }
+
 body {
   height: 90%;
   font-size: 14px;
@@ -9,27 +10,33 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #ddd;
 }
+
 .search {
   font-size: 1rem;
 }
+
 @media (min-width: 1024px) {
   html body {
     font-size: 20px;
   }
 }
+
 @media (min-width: 1280px) {
   html body {
     font-size: 24px;
   }
 }
+
 .map {
   width: 100%;
   height: 85%;
   margin-top: 2%;
 }
+
 .form-group {
   font-size: 50%;
 }
+
 .documentList {
   margin-top: 2rem;
   height: 8rem;
@@ -38,30 +45,37 @@ body {
   width: 90%;
   padding-left: 10%;
 }
+
 .documentItem {
   padding-bottom: .5rem;
 }
+
 .weatherWine {
   margin-top: 2%;
 }
+
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
 .navbar {
   margin-bottom: 0;
   background-color: #579170;
   border-color: #579170;
   border-radius: 0 !important;
 }
-ul, menu, dir {
+
+menu, dir {
   display: block;
   list-style-type: disc;
   -webkit-margin-before: 0;
@@ -70,6 +84,7 @@ ul, menu, dir {
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
 }
+
 .no-gutter > [class*='col-'] {
   padding-right: 1.3rem;
   padding-left: 0.3rem;
@@ -80,6 +95,7 @@ ul, menu, dir {
     padding-left: 0.3rem;
   }
 }
+
 .grapeBunch {
   -ms-transform: rotate(7deg);
   /* IE 9 */
@@ -87,27 +103,32 @@ ul, menu, dir {
   /* Chrome, Safari, Opera */
   transform: rotate(7deg);
 }
+
 .titleWine {
   font-size: 2rem;
   margin-left: 1rem;
   color: #fff;
   font-weight: 700;
 }
+
 .address1 {
   font-size: 14px;
   color: #91575b;
   font-family: 'Source Sans Pro', sans-serif;
 }
+
 .address2 {
   font-size: 14px;
   color: #91575b;
   font-family: 'Source Sans Pro', sans-serif;
 }
+
 .number {
   font-size: 14px;
   color: #579170;
   font-family: 'Source Sans Pro', sans-serif;
 }
+
 .website {
   color: #416c54;
   font-size: 14px;
@@ -122,6 +143,7 @@ ul, menu, dir {
   color: #579170;
   font-family: 'Source Sans Pro', sans-serif;
 }
+
 .wineTowns {
   color: #416c54;
   font-size: 1rem;
@@ -133,6 +155,7 @@ ul, menu, dir {
   overflow-y: scroll;
   height: 4rem;
 }
+
 @media (min-width: 768px) {
   .wineTowns {
     height: 7rem;
