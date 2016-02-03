@@ -20,6 +20,8 @@ var townList = ko.observableArray([{
   name: 'Rutherford'
 }, {
   name: 'St. Helena'
+}, {
+  name: 'All'
 }]);
 var selectedTown = ko.observable('');
 var wineryFilter = ko.observable(true);
@@ -89,6 +91,7 @@ var clickTown = function() {
 
 //filter box
 var filteredItems = ko.computed(function() {
+  wineryFilter(true);
   var myFilter = filter().toLowerCase();
   if (!myFilter || myFilter === "") {
     return modelWineries();
@@ -114,14 +117,23 @@ filteredItems.subscribe(function(newList) {
 
 //filter Towns
 var filteredTowns = ko.computed(function() {
+  var i;
+  if (selectedTown() === 'All') {
+    for (i = 0; i < modelWineries().length; i++) {
+      modelWineries()[i].marker.setVisible(true);
+    }
+    wineryFilter(true);
+    return modelWineries();
+  }
   var newList = [];
-  for (var i = 0; i < modelWineries().length; i++) {
+
+  for (i = 0; i < modelWineries().length; i++) {
     modelWineries()[i].marker.setVisible(false);
   }
   for (var j = 0; j < modelWineries().length; j++) {
     if (modelWineries()[j].address.indexOf(selectedTown()) > -1) {
       modelWineries()[j].marker.setVisible(true);
-      newList.push(modelWineries()[j].name);
+      newList.push(modelWineries()[j]);
     }
   }
   return newList;

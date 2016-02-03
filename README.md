@@ -13,7 +13,10 @@ The app interacts with the user in the following ways:
 3. The info bubble's first tab "Winery" holds a winery name that can be clicked to link to the winery's website in a new tab.
     - The winery's phone number and address is also listed.
     - The second tab "Photos" display up to 30 photos if the Winery has them from Foursquare in a scrollable list.
-
+4. The Town dropdown button organizes the 24 winery's into 5 towns (Calistoga, Napa, Pope Valley, Rutherford, St. Helena, and an option of All).
+    - You can select a town and it will display new name of the town underneath the Town button.
+    - The town you selected will now only feature winery's of that town in the winery list.
+    - The wine markers will only display winery's of the town you selected.
 
 ### Live Demo
 

@@ -12,7 +12,6 @@ body {
 .search {
   font-size: 1rem;
 }
-
 @media (min-width: 1024px) {
   html body {
     font-size: 20px;
@@ -75,12 +74,11 @@ ul, menu, dir {
   padding-right: 1.3rem;
   padding-left: 0.3rem;
 }
-
 @media (min-width: 360px) {
-.no-gutter > [class*='col-']{
-  padding-right: 1rem;
-  padding-left: 0.3rem;
-}
+  .no-gutter > [class*='col-'] {
+    padding-right: 1rem;
+    padding-left: 0.3rem;
+  }
 }
 .grapeBunch {
   -ms-transform: rotate(7deg);
@@ -116,24 +114,28 @@ ul, menu, dir {
   font-weight: 700;
   font-family: 'Source Sans Pro', sans-serif;
 }
-
 .navbar-toggle {
   background-color: #fff;
 }
-
 .wineTab {
   font-size: 16px;
   color: #579170;
   font-family: 'Source Sans Pro', sans-serif;
 }
-
-.wineTown {
-  padding-left: 1rem;
-}
 .wineTowns {
   color: #416c54;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
   padding-left: .5rem;
+  line-height: 1.3rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 2.2rem;
+}
+@media (min-width: 1024px) {
+  .wineTowns {
+    height: 7rem;
+    line-height: 1.8rem;
+  }
 }

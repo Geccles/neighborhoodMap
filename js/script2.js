@@ -10,13 +10,17 @@ var localStorage = null;
 var initialZoom = 10;
 var initialLatitude = 38.460694;
 var initialLongitude = -122.396604;
-var townList = ko.observableArray ([
-  { name: 'Calistoga'},
-  { name: 'Napa'},
-  { name: 'Pope Valley'},
-  { name: 'Rutherford'},
-  { name: 'St. Helena'}
-]);
+var townList = ko.observableArray([{
+  name: 'Calistoga'
+}, {
+  name: 'Napa'
+}, {
+  name: 'Pope Valley'
+}, {
+  name: 'Rutherford'
+}, {
+  name: 'St. Helena'
+}]);
 var selectedTown = ko.observable('');
 var wineryFilter = ko.observable(true);
 
@@ -78,7 +82,7 @@ var clickWine = function() {
 };
 
 //dropdown for towns
-var clickTown = function(){
+var clickTown = function() {
   selectedTown(this.name);
   wineryFilter(false);
 };
@@ -351,6 +355,6 @@ mapReady = function() {
   }
 };
 
-googleError = function(){
+googleError = function() {
   alert("Error loading google map");
 };
