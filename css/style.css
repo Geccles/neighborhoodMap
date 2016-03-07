@@ -111,6 +111,17 @@ menu, dir {
   font-weight: 700;
 }
 
+.home {
+  font-size: 1rem;
+  margin-left: 1rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
 .address1 {
   font-size: 14px;
   color: #91575b;
